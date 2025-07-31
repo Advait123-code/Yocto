@@ -1,0 +1,33 @@
+name: Yocto Build
+ 
+on:
+  push:
+    branches: [main]
+  pull_request:
+ 
+jobs:
+  build:
+    runs-on: [self-hosted, linux, x64]  # or add your runner label if custom
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+ 
+      - name: Set up Yocto environment
+        run: |
+          source poky/oe-init-build-env .
+ 
+      - name: Build Yocto Image
+        run: |
+          bitbake core-image-minimal
+ 
+      - name: Compress image artifacts
+        run: |
+          tar -czvf images.tar.gz -C ./tmp/deploy/images/ .
+ 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: yocto-images
+          path: images.tar.gz
