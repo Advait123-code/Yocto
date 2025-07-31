@@ -7,7 +7,7 @@ on:
  
 jobs:
   build:
-    runs-on: [self-hosted, linux, x64]  # or add your runner label if custom
+    runs-on: [cariad-yocto, linux, x64]  # or add your runner label if custom
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
