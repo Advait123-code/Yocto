@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
  
 jobs:
-  build:
-    runs-on: [cariad-yocto, linux, x64]  # or add your runner label if custom
+  test:
+    runs-on: [self-hosted, linux, x64]  # or add your runner label if custom
     steps:
       - name: Checkout repository
         run: |
