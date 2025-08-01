@@ -22,7 +22,8 @@ jobs:
       - name: Set up Yocto Environment
         run: |
           echo "Setting up Yocto environment"
-          cd ~/poky  # Replace this if your poky path is different
+          mkdir poky
+          cd /home/ubuntu/poky  # Replace this if your poky path is different
           source oe-init-build-env || { echo "Failed to source env"; exit 1; }
           echo "Yocto environment setup complete"
  
