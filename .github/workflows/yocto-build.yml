@@ -8,30 +8,7 @@ jobs:
     runs-on: [cariad-yocto, linux, x64]  # or add your runner label if custom
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
- 
-      - name: Set up Yocto environment
         run: |
-           echo "Sourcing Yocto environment..."
-           source poky/oe-init-build-env || { echo "Failed to source env"; exit 1; }
-           echo "Yocto environment set."
- 
-      - name: Build Yocto Image
-        run: |
-          echo "Starting bitbake build..."
-          bitbake core-image-minimal || { echo "Bitbake failed"; exit 1; }
-          echo "Bitbake build completed."
- 
-      - name: Compress image artifacts
-        run: |
-          echo "Compressing image outputs..."
-          tar -czvf images.tar.gz -C ./tmp/deploy/images/ . || { echo "Compression failed"; exit 1; }
-          echo "Compression completed."
- 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: yocto-images
-          path: images.tar.gz
+          eco "hello aadvait from runnner !"
+          pwd 
+          ls -l
