@@ -23,9 +23,7 @@ jobs:
           echo "Current directory is: $(pwd)"
           ls -l
 
-      - name: make poky dr
-        run: |
-          mkdir poky
+     
           
       - name: Set up Yocto Environment
         run: |
