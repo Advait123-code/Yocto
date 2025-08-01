@@ -14,12 +14,13 @@ jobs:
       
       - name: clone directory 
         run: |
-          git clone -b dunfell git://git.yoctoproject.org/poky poky
+          echo "Cloneing poky into /home/ubuntu/poky"
+          git clone -b dunfell git://git.yoctoproject.org/poky /home/ubuntu/poky
            
       - name: Set up Yocto Environment
         run: |
           echo "Setting up Yocto environment"
-          cd /Yocto/Yocto/poky  # Replace this if your poky path is different
+          cd /home/ubuntu/poky  # Replace this if your poky path is different
           source oe-init-build-env || { echo "Failed to source env"; exit 1; }
           echo "Yocto environment setup complete"
  
@@ -33,7 +34,7 @@ jobs:
       - name: Compress image artifacts
         run: |
           echo "Compressing image outputs..."
-          cd /Yocto/Yocto/poky/build/tmp/deploy/images
+          cd /home/ubuntu//poky/build/tmp/deploy/images
           tar -czvf ~/images.tar.gz . || { echo "Compression failed"; exit 1; }
           echo "Compression completed"
  
