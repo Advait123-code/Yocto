@@ -9,6 +9,6 @@ jobs:
     steps:
       - name: Checkout repository
         run: |
-          eco "hello aadvait from runnner !"
+          echo "hello aadvait from runnner !"
           pwd 
           ls -l
