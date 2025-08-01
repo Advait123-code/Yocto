@@ -14,17 +14,8 @@ jobs:
       
       - name: clone directory 
         run: |
-          git clone git://git.yoctoproject.org/poky
- 
-      - name: Change to Home Directory
-        run: |
-          echo "Switching to home directory"
-          cd ~
-          echo "Current directory is: $(pwd)"
-          ls -l
-
-     
-          
+          git clone -b dunfell git://git.yoctoproject.org/poky poky
+           
       - name: Set up Yocto Environment
         run: |
           echo "Setting up Yocto environment"
@@ -35,14 +26,14 @@ jobs:
       - name: Build Yocto Image
         run: |
           echo "Starting BitBake build"
-          cd ~/poky/build  # Adjust if your build dir is different
+          cd /home/ubuntu/poky/build  # Adjust if your build dir is different
           bitbake core-image-minimal || { echo "BitBake failed"; exit 1; }
           echo "BitBake build completed"
  
       - name: Compress image artifacts
         run: |
           echo "Compressing image outputs..."
-          cd ~/poky/build/tmp/deploy/images
+          cd /home/ubuntu/poky/build/tmp/deploy/images
           tar -czvf ~/images.tar.gz . || { echo "Compression failed"; exit 1; }
           echo "Compression completed"
  
