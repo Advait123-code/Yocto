@@ -15,7 +15,7 @@ jobs:
       - name: clone directory 
         run: |
           echo "Cloneing poky into /home/advait_joshi/poky"
-          git clone -b dunfell git://git.yoctoproject.org/poky /home/ubuntu/poky
+          git clone -b dunfell git://git.yoctoproject.org/poky /home/advait_joshi/poky
            
       - name: Set up Yocto Environment
         run: |
