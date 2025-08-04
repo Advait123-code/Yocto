@@ -22,14 +22,10 @@ jobs:
           echo "Setting up Yocto environment"
           cd /home/advait_joshi/poky   #Replace this if your poky path is different
           source oe-init-build-env || { echo "Failed to source env"; exit 1; }
+          bitbake core-image-minimal || { echo "BitBake failed"; exit 1; }
           echo "Yocto environment setup complete"
  
-      - name: Build Yocto Image
-        run: |
-          echo "Starting BitBake build"
-          cd /home/advait_joshi/poky/build  # Adjust if your build dir is different
-          bitbake core-image-minimal || { echo "BitBake failed"; exit 1; }
-          echo "BitBake build completed"
+      
  
       - name: Compress image artifacts
         run: |
