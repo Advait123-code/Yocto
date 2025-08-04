@@ -27,7 +27,7 @@ jobs:
       - name: Build Yocto Image
         run: |
           echo "Starting BitBake build"
-          cd /home/ubuntu/poky/build  # Adjust if your build dir is different
+          cd /home/ubuntu/poky  # Adjust if your build dir is different
           bitbake core-image-minimal || { echo "BitBake failed"; exit 1; }
           echo "BitBake build completed"
  
